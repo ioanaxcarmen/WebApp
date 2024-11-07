@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageService {
 
+    int counter;
+
     private String message;
 
     public String getMessage() {
@@ -15,4 +17,8 @@ public class MessageService {
         this.message = message;
     }
 
+    public int increment(int counter){
+        counter += 1;
+        return counter;
+    }
 }
