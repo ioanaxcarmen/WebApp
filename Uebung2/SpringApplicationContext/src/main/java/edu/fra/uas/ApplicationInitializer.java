@@ -7,8 +7,8 @@ public class ApplicationInitializer {
 
     public static void main(String[] args) {
         ApplicationInitializer  applicationInitializer  = new ApplicationInitializer();
-//        applicationInitializer .startupXML();
-        applicationInitializer .startupAnnotation();
+        applicationInitializer .startupXML();
+//        applicationInitializer .startupAnnotation();
     }
 
     public void startupXML() {
