@@ -6,13 +6,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("pleasePaint")
-public class Painting implements Work {
+@Qualifier("pleaseBuild")
+public class Building implements Work {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Painting.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Building.class);
 
     @Override
     public void doWork() {
-        LOGGER.info(" --> painting the wall black");
+        LOGGER.info("--> adding bricks");
+
     }
+
 }
