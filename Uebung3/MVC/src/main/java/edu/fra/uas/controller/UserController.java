@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import edu.fra.uas.model.User;
 import edu.fra.uas.service.UserService;
@@ -46,7 +47,7 @@ public class UserController {
 
     // http://127.0.0.1/find?id=1
     @RequestMapping(value = {"/find"}, method = RequestMethod.GET)
-    public String find(@RequestParam("id") Long userId, Model model) {
+    public String find(@RequestParam("id") Long userId, Model model) throws MethodArgumentTypeMismatchException {
         log.debug("find() is called");
         User user = userService.getUserById(userId);
         model.addAttribute("user", user);

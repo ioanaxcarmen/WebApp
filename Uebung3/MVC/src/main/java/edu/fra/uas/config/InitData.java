@@ -16,7 +16,7 @@ public class InitData {
     @Autowired
     UserService userService;
 
-    @PostConstruct
+    @PostConstruct //um Daten zu initialisieren 
     public void init() {
         log.debug("### Initialize Data ###");
 

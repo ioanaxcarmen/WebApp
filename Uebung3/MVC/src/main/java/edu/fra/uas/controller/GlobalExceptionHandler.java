@@ -5,6 +5,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,6 +26,22 @@ public class GlobalExceptionHandler {
 		mav.addObject("url", req.getRequestURL());
 		mav.addObject("timestamp", new Date().toString());
 		mav.addObject("status", 500);
+
+		mav.setViewName("support");
+		return mav;
+    }
+
+	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ModelAndView handleMethodArgumentTypeMismatch(HttpServletRequest req, MethodArgumentTypeMismatchException exception) {
+        log.debug("handleMetdodArgumentTypeMismatch() is called");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", exception);
+		mav.addObject("url", req.getRequestURL());
+		mav.addObject("timestamp", new Date().toString());
+		mav.addObject("status", 400); // 400 weil Client-Fehler
+		mav.addObject("error", "Invalid argument type");
+		mav.addObject("message", exception.getMessage());
 
 		mav.setViewName("support");
 		return mav;
